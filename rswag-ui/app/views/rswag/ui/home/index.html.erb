@@ -64,11 +64,17 @@
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
         },
+        <% if @json_editor -%>
+        docExpansion: "none",
+        sorter: "alpha",
+        jsonEditor: true,
+        <% else -%>
         docExpansion: "list",
-        jsonEditor: false,
+        <% end -%>
         defaultModelRendering: 'schema',
-        showRequestHeaders: false
-      });
+        showRequestHeaders: <%= @show_request_headers %>
+
+});
 
       window.swaggerUi.load();
 
